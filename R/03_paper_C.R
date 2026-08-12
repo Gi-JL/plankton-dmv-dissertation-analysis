@@ -1,15 +1,13 @@
 ############################
 # Analysis code for Paper C of the cumulative dissertation
-# n = 172, based on BIOcean5D DMV workshops conducted between 11 October 2023 and 7 February 2024
+# Quasi-binomial, conditional logit, and ordered logistic regression models
 # Input-data sources and download instructions: see data/README.md
 ############################
 
 # Run this script from the repository root so that relative paths such as
 # "./data/DMV data_EN.csv" resolve correctly.
 
-############################
-# Overview
-############################
+############## Overview ###############
 # 1. Quasi-binomial logit regression models of policy support
 # 2. Conditional logit model estimates in willingness-to-pay (WTP) space
 # 3. Ordered logistic regression results – estimating perceived influence of other workshop participants
