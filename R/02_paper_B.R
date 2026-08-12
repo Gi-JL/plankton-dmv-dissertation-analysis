@@ -7,17 +7,6 @@
 # Run this script from the repository root so that relative paths such as
 # "./data/DMV data.csv" resolve correctly.
 
-############################
-### Place the following files in the data/ directory:
-### 1) "DMV data.csv"
-### 2) "PCODE_2020_PT_SH"
-### --> https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units/postal-codes
-### 3) "Europe_coastline"
-### --> https://www.eea.europa.eu/data-and-maps/data/eea-coastline-for-analysis-1/gis-data/europe-coastline-shapefile
-### Please be aware that processing these shapefiles, which are required for calculating distances from the coast, may take some time.
-############################
-
-
 ############## Overview ###############
 # 1. Data import and preparation
 # 2. Wilcoxon rank-sum tests (Coastal vs Inland)
