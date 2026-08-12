@@ -1,8 +1,8 @@
 # Input data
 
-The analysis scripts in this repository require survey, discrete choice experiment, and geospatial input data that are not stored directly in the Git repository.
+The analysis scripts in this repository require survey, discrete choice experiment, coded discussion, and geospatial input data. Most input data are not stored directly in the Git repository and must be obtained from the sources listed below.
 
-Download the required files from the sources listed below and place them in this `data/` directory before running the analyses.
+Download the required external files and place them in this `data/` directory before running the analyses. The coded discussion data required for Paper C are included directly in this directory.
 
 ## Survey and discrete choice experiment data
 
@@ -33,10 +33,11 @@ Required files:
 - `final design_baesyian efficient design with interaction.NGD`
 - `Pro_contra_statements_respondents_csv_UTF_8.csv`
 
-Source:
+The first two files are available from:
 
 https://doi.org/10.5281/zenodo.17710200
 
+The coded discussion data file `Pro_contra_statements_respondents_csv_UTF_8.csv` is included directly in this repository.
 ## Geospatial data
 
 Some analyses in Papers A and B calculate respondents' distance from the coastline and therefore require external geospatial datasets.
@@ -67,7 +68,7 @@ Again, retain all associated shapefile components in the `data/` directory.
 
 ## Expected directory contents
 
-After downloading the required files, the directory should contain approximately:
+After downloading the required external files, the `data/` directory should contain approximately:
 
 ```text
 data/
