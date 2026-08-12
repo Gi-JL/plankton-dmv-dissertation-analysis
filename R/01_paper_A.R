@@ -1,7 +1,11 @@
 ############################
 # Analysis code for Paper A of the cumulative dissertation
-# The input data can be found at https://doi.org/10.5281/zenodo.12638010
+# Conditional and mixed logit models and related heterogeneity analyses
+# Input-data sources and download instructions: see data/README.md
 ############################
+
+# Run this script from the repository root so that relative paths such as
+# "./data/DMV data.csv" resolve correctly.
 
 ############## Overview ###############
 # 1. Conditional logit model in WTP-space
