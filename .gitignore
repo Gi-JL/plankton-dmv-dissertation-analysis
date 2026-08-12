@@ -47,3 +47,8 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# Input data
+data/*
+!data/README.md
+!data/Pro_contra_statements_respondents_csv_UTF_8.csv
