@@ -1,7 +1,5 @@
 ############################
-# Analysis of the DCE data from the BIOcean5d DMV workshops
-# n=172, conducted between 11 October 2023 and 7 February 2024
-# contact: gilles.jean-louis@ufz.de
+# Analysis code for Paper A of the cumulative dissertation
 # The input data can be found at https://doi.org/10.5281/zenodo.12638010
 ############################
 
