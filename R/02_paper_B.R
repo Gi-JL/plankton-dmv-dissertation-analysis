@@ -87,7 +87,7 @@ all_data <- all_data %>% relocate(PC_CNTR, .after = ISCED)
 
 all_data_points <- sf::st_as_sf(all_data)
 
-coastline <- st_read("./data/EEA_Coastline_20170228.shp")
+coastline <- st_read("./data/Europe_coastline/Europe_coastline.shp")
 
 st_crs(coastline)
 st_crs(all_data_points)
