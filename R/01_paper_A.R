@@ -2640,7 +2640,16 @@ apollo_modelOutput(model, modelOutput_settings = list(printPVal=1))
 rm(list=ls()[! ls() %in% c("model","database")])
 
 
+############################
+# Optional starting-value searches
+############################
 
+# These searches document how the starting values used above were obtained.
+# They are computationally intensive and are therefore skipped by default.
+# Set to TRUE to reproduce the starting-value searches.
+run_starting_value_search <- FALSE
+
+if (run_starting_value_search) {
 ######################
 # 10. Documentation of starting value search (Conditional logit model in WTP-space)
 ######################
@@ -3102,6 +3111,9 @@ apollo_beta = apollo_searchStart(apollo_beta,
                                  apollo_probabilities,
                                  apollo_inputs,
                                  searchStart_settings)
+
+} # End optional starting-value searches
+
 
 #Best candidate (LL=-1883.476)
 #		Value
