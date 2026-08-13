@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Plankton DMV Dissertation Analysis"
+type: software
+authors:
+  - given-names: "Gilles"
+    family-names: "Jean-Louis"
+    orcid: "https://orcid.org/0000-0003-3008-1588"
+abstract: "R code for the quantitative analyses underlying a cumulative dissertation on the deliberative monetary valuation of marine biodiversity and plankton ecosystem services."
+keywords:
+  - deliberative monetary valuation
+  - marine biodiversity
+  - plankton
+  - ecosystem services
+  - discrete choice experiment
+  - R
+license: GPL-3.0-or-later
+version: 1.0.0
+url: "https://github.com/Gi-JL/plankton-dmv-dissertation-analysis"
