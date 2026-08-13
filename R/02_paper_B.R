@@ -78,7 +78,10 @@ all_data <- all_data %>%
     PC_CNTR = Postcode
     )
 
-coords <- as.data.frame(eu_pc[, c(4, 16)])
+coords <- eu_pc %>%
+  dplyr::select(PC_CNTR) %>%
+  as.data.frame()
+
 all_data <- merge(all_data, coords, by = "PC_CNTR", all.x=T)
 all_data <- all_data %>% relocate(PC_CNTR, .after = ISCED)
 
