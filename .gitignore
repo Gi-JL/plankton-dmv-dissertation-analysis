@@ -52,3 +52,5 @@ rsconnect/
 data/*
 !data/README.md
 !data/Pro_contra_statements_respondents_csv_UTF_8.csv
+!data/Europe_coastline/
+!data/Europe_coastline/**
