@@ -703,7 +703,10 @@ dce_data <- dce_data %>%
     PC_CNTR = Postcode
     )
 
-coords <- as.data.frame(eu_pc[, c(4, 16)])
+coords <- eu_pc %>%
+  dplyr::select(PC_CNTR) %>%
+  as.data.frame()
+
 dce_data <- merge(dce_data, coords, by = "PC_CNTR")
 
 dce_data <- dce_data %>% relocate(PC_CNTR, .after = ISCED)
@@ -721,7 +724,7 @@ dce_data_points <- st_transform(dce_data_points, crs = st_crs(coastline))
 dce_data_points$dist2coast <- (apply(st_distance(dce_data_points, coastline), 1,min))
 
 point_df <- as.data.frame(dce_data_points)
-dist2coast <- point_df[, c(1,93)]
+dist2coast <- point_df[, c("RID", "dist2coast")]
 
 dce_data <- merge(dce_data, dist2coast, by = "RID")
 
@@ -1176,7 +1179,7 @@ dist2coast <- point_df[, c(1,93)]
 
 dce_data <- merge(dce_data, dist2coast, by = "RID")
 dce_data$dist2coast_km <- dce_data$dist2coast/1000
-dce_data <- dce_data[,-93]
+dce_data$dist2coast <- NULL
 
 design <- read_delim("./data/final design_baesyian efficient design with interaction.NGD",delim = "\t",
                        escape_double = FALSE,
