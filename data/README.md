@@ -48,11 +48,13 @@ Source: Eurostat GISCO
 
 https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units/postal-codes
 
-The analysis scripts expect the postal-code shapefile to be available as:
+Download the 2020 postal-code point dataset in ESRI Shapefile format using the EPSG:3035 projection.
 
-`PCODE_2020_PT_SH.shp`
+The analysis scripts expect the shapefile to be available as:
 
-Remember that a shapefile consists of several files with the same base name (for example `.shp`, `.shx`, `.dbf`, and `.prj`). Keep these files together in the `data/` directory.
+`PCODE_PT_2020_3035.shp`
+
+Keep all associated shapefile components extracted from the downloaded archive together in the `data/` directory.
 
 ### European coastline data
 
@@ -60,11 +62,13 @@ Source: European Environment Agency
 
 https://www.eea.europa.eu/data-and-maps/data/eea-coastline-for-analysis-1
 
-The analysis scripts expect the coastline shapefile to be available as:
+The analysis scripts use the EEA coastline for analysis (polygon), version 3.0, March 2017.
 
-`Europe_coastline.shp`
+The shapefile is expected as:
 
-Again, retain all associated shapefile components in the `data/` directory.
+`EEA_Coastline_20170228.shp`
+
+Keep all associated shapefile components together in the `data/` directory.
 
 ## Expected directory contents
 
