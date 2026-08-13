@@ -421,7 +421,6 @@ rm(list=ls()[! ls() %in% c("model","database")])
 ### 3) "PCODE_2020_PT_SH"
 ### --> https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units/postal-codes
 ### 4) "Europe_coastline"
-### --> https://www.eea.europa.eu/data-and-maps/data/eea-coastline-for-analysis-1/gis-data/europe-coastline-shapefile
 
 rm(list=ls())
 library(apollo)
@@ -714,7 +713,7 @@ dce_data <- dce_data %>% relocate(geometry, .after = PC_CNTR)
 
 dce_data_points <- sf::st_as_sf(dce_data)
 
-coastline <- st_read("./data/EEA_Coastline_20170228.shp")
+coastline <- st_read("./data/Europe_coastline/Europe_coastline.shp")
 
 st_crs(coastline)
 st_crs(dce_data_points)
@@ -1116,7 +1115,6 @@ rm(list=ls()[! ls() %in% c("combined_results","model_inland","model_coast","data
 ### 3) "PCODE_2020_PT_SH"
 ### --> https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units/postal-codes
 ### 4) "Europe_coastline"
-### --> https://www.eea.europa.eu/data-and-maps/data/eea-coastline-for-analysis-1/gis-data/europe-coastline-shapefile
 
 rm(list=ls())
 library(dplyr)
@@ -1166,9 +1164,7 @@ dce_data <- dce_data %>% relocate(geometry, .after = PC_CNTR)
 
 dce_data_points <- sf::st_as_sf(dce_data)
 
-#Input file can be obtained from https://www.eea.europa.eu/data-and-maps/data/eea-coastline-for-analysis-1/gis-data/europe-coastline-shapefile
-
-coastline <- st_read("./data/EEA_Coastline_20170228.shp")
+coastline <- st_read("./data/Europe_coastline/Europe_coastline.shp")
 
 st_crs(coastline)
 st_crs(dce_data_points)
