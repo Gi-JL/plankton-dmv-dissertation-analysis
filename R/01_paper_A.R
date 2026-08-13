@@ -677,7 +677,7 @@ library(sf)
 dce_data <- read.csv2("./data/DMV data.csv")
 dce_data$Postcode[dce_data$WS_ID == 7] <- paste0("0", dce_data$Postcode[dce_data$WS_ID == 7])
 
-eu_pc <- st_read("./data/PCODE_2020_PT_SH.shp")
+eu_pc <- st_read("./data/PCODE_PT_2020_3035.shp")
 
 dce_data <- dce_data %>% 
   rename(
@@ -711,7 +711,7 @@ dce_data <- dce_data %>% relocate(geometry, .after = PC_CNTR)
 
 dce_data_points <- sf::st_as_sf(dce_data)
 
-coastline <- st_read("./data/Europe_coastline.shp")
+coastline <- st_read("./data/EEA_Coastline_20170228.shp")
 
 st_crs(coastline)
 st_crs(dce_data_points)
@@ -1126,7 +1126,7 @@ dce_data <- read.csv2("./data/DMV data.csv")
 dce_data$Postcode[dce_data$WS_ID == 7] <- paste0("0", dce_data$Postcode[dce_data$WS_ID == 7])
 
 #Input file can be obtained from https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units/postal-codes
-eu_pc <- st_read("./data/PCODE_2020_PT_SH.shp")
+eu_pc <- st_read("./data/PCODE_PT_2020_3035.shp")
 
 dce_data <- dce_data %>% 
   rename(
@@ -1162,7 +1162,7 @@ dce_data_points <- sf::st_as_sf(dce_data)
 
 #Input file can be obtained from https://www.eea.europa.eu/data-and-maps/data/eea-coastline-for-analysis-1/gis-data/europe-coastline-shapefile
 
-coastline <- st_read("./data/Europe_coastline.shp")
+coastline <- st_read("./data/EEA_Coastline_20170228.shp")
 
 st_crs(coastline)
 st_crs(dce_data_points)
