@@ -60,7 +60,7 @@ all_data$Coastal <- as.factor(all_data$Coastal)
 
 all_data$Postcode[all_data$WS_ID == 7] <- paste0("0", all_data$Postcode[all_data$WS_ID == 7])
 
-eu_pc <- st_read("./data/PCODE_2020_PT_SH.shp")
+eu_pc <- st_read("./data/PCODE_PT_2020_3035.shp")
 
 all_data$Postcode[all_data$Country == "Poland"] <- paste0("PL_", all_data$Postcode[all_data$Country == "Poland"])
 all_data$Postcode[all_data$Country == "Poland"] <- sub("^(.{5})", "\\1-", all_data$Postcode[all_data$Country == "Poland"])
@@ -84,7 +84,7 @@ all_data <- all_data %>% relocate(PC_CNTR, .after = ISCED)
 
 all_data_points <- sf::st_as_sf(all_data)
 
-coastline <- st_read("./data/Europe_coastline.shp")
+coastline <- st_read("./data/EEA_Coastline_20170228.shp")
 
 st_crs(coastline)
 st_crs(all_data_points)
