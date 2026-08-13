@@ -1155,7 +1155,10 @@ dce_data <- dce_data %>%
     PC_CNTR = Postcode
     )
 
-coords <- as.data.frame(eu_pc[, c(4, 16)])
+coords <- eu_pc %>%
+  dplyr::select(PC_CNTR) %>%
+  as.data.frame()
+
 dce_data <- merge(dce_data, coords, by = "PC_CNTR")
 
 dce_data <- dce_data %>% relocate(PC_CNTR, .after = ISCED)
