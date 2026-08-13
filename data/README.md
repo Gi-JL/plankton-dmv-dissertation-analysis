@@ -58,17 +58,31 @@ Keep all associated shapefile components extracted from the downloaded archive t
 
 ### European coastline data
 
-Source: European Environment Agency
+The distance-to-coast analyses in Papers A and B use the following dataset:
 
-https://www.eea.europa.eu/data-and-maps/data/eea-coastline-for-analysis-1
+**EEA coastline for analysis (line), version 2.0, September 2015**
 
-The analysis scripts use the EEA coastline for analysis (polygon), version 3.0, March 2017.
+Original source: European Environment Agency (EEA)
 
-The shapefile is expected as:
+https://www.eea.europa.eu/en/datahub/datahubitem-view/af40333f-9e94-4926-a4f0-0a787f1d2b8f?activeAccordion=278520
 
-`EEA_Coastline_20170228.shp`
+The line dataset used for the analyses has since been superseded by a newer
+polygon version. At the time this repository was prepared, the original EEA
+download for the superseded line dataset was no longer functioning reliably.
 
-Keep all associated shapefile components together in the `data/` directory.
+To preserve reproducibility, the original coastline shapefile used for the
+analyses is therefore included directly in this repository under the following
+filenames:
+
+- `Europe_coastline.shp`
+- `Europe_coastline.shx`
+- `Europe_coastline.dbf`
+- `Europe_coastline.prj`
+
+These files originate from the European Environment Agency and are redistributed
+here solely to reproduce the analyses reported in the dissertation. The EEA should
+be acknowledged as the original source. These files are not covered by the
+GPL-3.0-or-later license applying to the analysis code in this repository.
 
 ## Expected directory contents
 
