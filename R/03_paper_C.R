@@ -830,7 +830,8 @@ design <- read_delim(
     -Design,
     -starts_with("...")
   ),
-  name_repair = "universal"
+  name_repair = "universal",
+  n_max = 16
 ) %>%
   filter(
     !is.na(
@@ -2436,7 +2437,8 @@ design <- read_delim(
     -Design,
     -starts_with("...")
   ),
-  name_repair = "universal"
+  name_repair = "universal",
+  n_max = 16
 ) %>%
   filter(
     !is.na(
