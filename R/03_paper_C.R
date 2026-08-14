@@ -5,62 +5,92 @@
 # 4. Documentation of starting-value search for conditional logit models in WTP-space
 #######################################
 
-
 ############################
 # Apollo version
 ############################
 
 # All logit models reported in this paper were estimated using
-# Apollo version 0.3.5.
+# Apollo version 0.3.5. The script therefore checks for this version
+# before Apollo is loaded and installs it if necessary.
 
 required_apollo_version <- "0.3.5"
 
-if (!requireNamespace("renv", quietly = TRUE)) {
-  install.packages("renv")
-}
+# If Apollo is already loaded, verify that the loaded version is correct.
+if ("apollo" %in% loadedNamespaces()) {
 
-if (
-  !requireNamespace("apollo", quietly = TRUE) ||
-  as.character(packageVersion("apollo")) != required_apollo_version
-) {
+  loaded_apollo_version <- as.character(
+    utils::packageVersion("apollo")
+  )
 
-  if ("apollo" %in% loadedNamespaces()) {
+  if (loaded_apollo_version != required_apollo_version) {
     stop(
-      "Apollo is already loaded, but version ",
+      "Apollo ", loaded_apollo_version,
+      " is already loaded in the current R session, but Apollo ",
       required_apollo_version,
-      " is required. Restart R and rerun the script."
+      " is required to reproduce the reported results. ",
+      "Restart R without loading Apollo manually and rerun the script."
     )
   }
 
-  message(
-    "Installing Apollo ",
-    required_apollo_version,
-    " for reproducibility..."
-  )
+} else {
 
-  renv::install(
-    paste0(
-      "apollo@",
-      required_apollo_version
+  # Check the installed version without loading the Apollo namespace.
+  installed_packages <- utils::installed.packages()
+
+  apollo_installed <-
+    "apollo" %in% rownames(installed_packages)
+
+  installed_apollo_version <-
+    if (apollo_installed) {
+      installed_packages["apollo", "Version"]
+    } else {
+      NA_character_
+    }
+
+  # Install the required version if Apollo is missing or has another version.
+  if (
+    !apollo_installed ||
+    installed_apollo_version != required_apollo_version
+  ) {
+
+    if (!requireNamespace("renv", quietly = TRUE)) {
+      install.packages("renv")
+    }
+
+    message(
+      "Installing Apollo ",
+      required_apollo_version,
+      " for reproducibility..."
     )
-  )
+
+    renv::install(
+      paste0(
+        "apollo@",
+        required_apollo_version
+      )
+    )
+  }
 }
 
-if (
-  as.character(packageVersion("apollo")) != required_apollo_version
-) {
+# Final check before the analysis begins.
+installed_apollo_version <-
+  as.character(
+    utils::packageVersion("apollo")
+  )
+
+if (installed_apollo_version != required_apollo_version) {
   stop(
     "Apollo ",
     required_apollo_version,
-    " is required, but version ",
-    as.character(packageVersion("apollo")),
-    " is currently available."
+    " is required, but Apollo ",
+    installed_apollo_version,
+    " is currently installed."
   )
 }
 
 message(
   "Using Apollo ",
-  as.character(packageVersion("apollo"))
+  installed_apollo_version
 )
 
 ############################
