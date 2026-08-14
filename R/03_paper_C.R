@@ -1,3 +1,18 @@
+############################
+# Analysis code for Paper C of the cumulative dissertation
+# Quasi-binomial, conditional logit, and ordered logistic regression models
+# Input-data sources and download instructions: see data/README.md
+############################
+
+# Run this script from the repository root:
+# source("R/03_paper_C.R")
+#
+# Alternatively, from a terminal:
+# Rscript R/03_paper_C.R
+#
+# Relative paths such as "./data/..." assume that the repository root
+# is the current working directory.
+
 ############## Overview ###############
 # 1. Quasi-binomial logit regression models of policy support
 # 2. Conditional logit model estimates in willingness-to-pay (WTP) space
