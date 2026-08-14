@@ -10,87 +10,97 @@
 ############################
 
 # All logit models reported in this paper were estimated using
-# Apollo version 0.3.5. The script therefore checks for this version
-# before Apollo is loaded and installs it if necessary.
+# Apollo version 0.3.5. The script therefore installs this version
+# automatically if another version is currently installed.
 
 required_apollo_version <- "0.3.5"
+required_rsghb_version <- "1.2.2"
 
-# If Apollo is already loaded, verify that the loaded version is correct.
-if ("apollo" %in% loadedNamespaces()) {
+installed_packages <- utils::installed.packages()
 
-  loaded_apollo_version <- as.character(
-    utils::packageVersion("apollo")
-  )
+apollo_installed <-
+  "apollo" %in% rownames(installed_packages)
 
-  if (loaded_apollo_version != required_apollo_version) {
+installed_apollo_version <-
+  if (apollo_installed) {
+    installed_packages["apollo", "Version"]
+  } else {
+    NA_character_
+  }
+
+# Install the required Apollo version if necessary.
+if (
+  !apollo_installed ||
+  installed_apollo_version != required_apollo_version
+) {
+
+  # An already loaded Apollo namespace cannot safely be replaced.
+  if ("apollo" %in% loadedNamespaces()) {
     stop(
-      "Apollo ", loaded_apollo_version,
+      "Apollo ", installed_apollo_version,
       " is already loaded in the current R session, but Apollo ",
       required_apollo_version,
-      " is required to reproduce the reported results. ",
-      "Restart R without loading Apollo manually and rerun the script."
+      " is required. Restart R and rerun the script."
     )
   }
 
-} else {
-
-  # Check the installed version without loading the Apollo namespace.
-  installed_packages <- utils::installed.packages()
-
-  apollo_installed <-
-    "apollo" %in% rownames(installed_packages)
-
-  installed_apollo_version <-
-    if (apollo_installed) {
-      installed_packages["apollo", "Version"]
-    } else {
-      NA_character_
-    }
-
-  # Install the required version if Apollo is missing or has another version.
-  if (
-    !apollo_installed ||
-    installed_apollo_version != required_apollo_version
-  ) {
-
-    if (!requireNamespace("renv", quietly = TRUE)) {
-      install.packages("renv")
-    }
-
-    message(
-      "Installing Apollo ",
-      required_apollo_version,
-      " for reproducibility..."
-    )
-
-    renv::install(
-      paste0(
-        "apollo@",
-        required_apollo_version
-      )
-    )
-  }
-}
-
-# Final check before the analysis begins.
-installed_apollo_version <-
-  as.character(
-    utils::packageVersion("apollo")
-  )
-
-if (installed_apollo_version != required_apollo_version) {
-  stop(
+  message(
     "Apollo ",
     required_apollo_version,
-    " is required, but Apollo ",
-    installed_apollo_version,
-    " is currently installed."
+    " is required. Installing the required version..."
+  )
+
+  # remotes is used because Apollo 0.3.5 and its RSGHB dependency
+  # are archived CRAN package versions.
+  if (!requireNamespace("remotes", quietly = TRUE)) {
+    install.packages("remotes")
+  }
+
+  # RSGHB 1.2.2 is an archived dependency of Apollo 0.3.5.
+  installed_packages <- utils::installed.packages()
+
+  if (
+    !"RSGHB" %in% rownames(installed_packages) ||
+    installed_packages["RSGHB", "Version"] != required_rsghb_version
+  ) {
+    remotes::install_version(
+      "RSGHB",
+      version = required_rsghb_version,
+      repos = "https://cloud.r-project.org",
+      dependencies = NA,
+      upgrade = "never",
+      force = TRUE
+    )
+  }
+
+  # Install the Apollo version used for the reported analyses.
+  remotes::install_version(
+    "apollo",
+    version = required_apollo_version,
+    repos = "https://cloud.r-project.org",
+    dependencies = NA,
+    upgrade = "never",
+    force = TRUE
+  )
+}
+
+# Verify the installed version before continuing.
+installed_packages <- utils::installed.packages()
+
+if (
+  !"apollo" %in% rownames(installed_packages) ||
+  installed_packages["apollo", "Version"] != required_apollo_version
+) {
+  stop(
+    "Installation of Apollo ",
+    required_apollo_version,
+    " was not successful. The analysis cannot continue."
   )
 }
 
 message(
   "Using Apollo ",
-  installed_apollo_version
+  installed_packages["apollo", "Version"]
 )
 
 ############################
