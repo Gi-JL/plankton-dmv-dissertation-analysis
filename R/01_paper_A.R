@@ -4,8 +4,14 @@
 # Input-data sources and download instructions: see data/README.md
 ############################
 
-# Run this script from the repository root so that relative paths such as
-# "./data/DMV data.csv" resolve correctly.
+# Run this script from the repository root:
+# source("R/01_paper_A.R")
+#
+# Alternatively, from a terminal:
+# Rscript R/01_paper_A.R
+#
+# Relative paths such as "./data/..." assume that the repository root
+# is the current working directory.
 
 ############## Overview ###############
 # 1. Conditional logit model in WTP-space
