@@ -166,11 +166,10 @@ dce_data <- dce_data %>%
 
 # Read respondent-level coded pro/contra statements and aggregate them by respondent.
 ind_stat <- read.csv2(
-  "./data/Pro_contra_statements_respondents_csv_UTF_8.csv"
+  "./data/Pro_contra_statements_respondents_csv_UTF_8.csv",
+  fileEncoding = "UTF-8-BOM"
 ) %>%
-  filter(
-    !is.na(RID)
-  )
+  filter(!is.na(RID))
 
 ind_stat_merged <- ind_stat %>%
   group_by(RID) %>%
@@ -666,11 +665,10 @@ dce_data <- dce_data %>%
 
 # Read respondent-level coded pro/contra statements and aggregate them by respondent.
 ind_stat <- read.csv2(
-  "./data/Pro_contra_statements_respondents_csv_UTF_8.csv"
+  "./data/Pro_contra_statements_respondents_csv_UTF_8.csv",
+  fileEncoding = "UTF-8-BOM"
 ) %>%
-  filter(
-    !is.na(RID)
-  )
+  filter(!is.na(RID))
 
 ind_stat_merged <- ind_stat %>%
   group_by(RID) %>%
@@ -2016,11 +2014,10 @@ dce_data <- dce_data %>%
 
 # Read respondent-level coded pro/contra statements and aggregate them by respondent.
 ind_stat <- read.csv2(
-  "./data/Pro_contra_statements_respondents_csv_UTF_8.csv"
+  "./data/Pro_contra_statements_respondents_csv_UTF_8.csv",
+  fileEncoding = "UTF-8-BOM"
 ) %>%
-  filter(
-    !is.na(RID)
-  )
+  filter(!is.na(RID))
 
 ind_stat_merged <- ind_stat %>%
   group_by(RID) %>%
