@@ -159,7 +159,8 @@ design <- read_delim(
   escape_double = FALSE,
   trim_ws = TRUE,
   col_select = c(-Design, -starts_with("...")),
-  name_repair = "universal"
+  name_repair = "universal",
+  n_max = 16
 ) %>%
   filter(!is.na(Choice.situation))
 
@@ -408,7 +409,8 @@ design <- read_delim(
   escape_double = FALSE,
   trim_ws = TRUE,
   col_select = c(-Design, -starts_with("...")),
-  name_repair = "universal"
+  name_repair = "universal",
+  n_max = 16
 ) %>%
   filter(!is.na(Choice.situation))
 
@@ -664,7 +666,8 @@ design <- read_delim(
   escape_double = FALSE,
   trim_ws = TRUE,
   col_select = c(-Design, -starts_with("...")),
-  name_repair = "universal"
+  name_repair = "universal",
+  n_max = 16
 ) %>%
   filter(!is.na(Choice.situation))
 
@@ -1245,7 +1248,8 @@ design <- read_delim(
   escape_double = FALSE,
   trim_ws = TRUE,
   col_select = c(-Design, -starts_with("...")),
-  name_repair = "universal"
+  name_repair = "universal",
+  n_max = 16
 ) %>%
   filter(!is.na(Choice.situation))
 
@@ -1857,7 +1861,8 @@ design <- read_delim(
   escape_double = FALSE,
   trim_ws = TRUE,
   col_select = c(-Design, -starts_with("...")),
-  name_repair = "universal"
+  name_repair = "universal",
+  n_max = 16
 ) %>%
   filter(!is.na(Choice.situation))
 
@@ -2155,7 +2160,8 @@ design <- read_delim(
   escape_double = FALSE,
   trim_ws = TRUE,
   col_select = c(-Design, -starts_with("...")),
-  name_repair = "universal"
+  name_repair = "universal",
+  n_max = 16
 ) %>%
   filter(!is.na(Choice.situation))
 
@@ -3072,7 +3078,8 @@ design <- read_delim(
   escape_double = FALSE,
   trim_ws = TRUE,
   col_select = c(-Design, -starts_with("...")),
-  name_repair = "universal"
+  name_repair = "universal",
+  n_max = 16
 ) %>%
   filter(!is.na(Choice.situation))
 
@@ -3529,7 +3536,8 @@ design <- read_delim(
   escape_double = FALSE,
   trim_ws = TRUE,
   col_select = c(-Design, -starts_with("...")),
-  name_repair = "universal"
+  name_repair = "universal",
+  n_max = 16
 ) %>%
   filter(!is.na(Choice.situation))
 
@@ -4175,7 +4183,8 @@ design <-
         -starts_with("...")
       ),
     name_repair =
-      "universal"
+      "universal",
+  n_max = 16
   ) %>%
   filter(
     !is.na(
@@ -4711,7 +4720,8 @@ design <-
         -starts_with("...")
       ),
     name_repair =
-      "universal"
+      "universal",
+  n_max = 16
   ) %>%
   filter(
     !is.na(
@@ -5172,7 +5182,8 @@ design <-
         -starts_with("...")
       ),
     name_repair =
-      "universal"
+      "universal",
+  n_max = 16
   ) %>%
   filter(
     !is.na(
