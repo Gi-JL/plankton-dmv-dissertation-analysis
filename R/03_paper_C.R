@@ -7,6 +7,63 @@
 
 
 ############################
+# Apollo version
+############################
+
+# All logit models reported in this paper were estimated using
+# Apollo version 0.3.5.
+
+required_apollo_version <- "0.3.5"
+
+if (!requireNamespace("renv", quietly = TRUE)) {
+  install.packages("renv")
+}
+
+if (
+  !requireNamespace("apollo", quietly = TRUE) ||
+  as.character(packageVersion("apollo")) != required_apollo_version
+) {
+
+  if ("apollo" %in% loadedNamespaces()) {
+    stop(
+      "Apollo is already loaded, but version ",
+      required_apollo_version,
+      " is required. Restart R and rerun the script."
+    )
+  }
+
+  message(
+    "Installing Apollo ",
+    required_apollo_version,
+    " for reproducibility..."
+  )
+
+  renv::install(
+    paste0(
+      "apollo@",
+      required_apollo_version
+    )
+  )
+}
+
+if (
+  as.character(packageVersion("apollo")) != required_apollo_version
+) {
+  stop(
+    "Apollo ",
+    required_apollo_version,
+    " is required, but version ",
+    as.character(packageVersion("apollo")),
+    " is currently available."
+  )
+}
+
+message(
+  "Using Apollo ",
+  as.character(packageVersion("apollo"))
+)
+
+############################
 # Output directories
 ############################
 
