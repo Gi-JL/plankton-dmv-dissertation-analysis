@@ -818,10 +818,6 @@ apollo_beta = c(
 
 apollo_fixed = c()
 
-# Fix the random seed for reproducibility of the MLHS draws in the repository analysis.
-# No random seed was fixed in the original analysis reported in Paper A.
-set.seed(12345)
-
 apollo_draws = list(
   interDrawsType = "mlhs",
   interNDraws = 5000,
