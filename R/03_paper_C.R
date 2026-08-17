@@ -1268,6 +1268,15 @@ model1_output <-
     )
   )
 
+# Add one-sided p-values based on the robust standard errors used in the dissertation.
+model1_output[["Rob.p(1-sided)"]] <-
+  pnorm(
+    -abs(
+      model1_output[["Estimate"]] /
+        model1_output[["Rob.s.e."]]
+    )
+  )
+
 saveRDS(
   model1,
   "./outputs/paper_C/models/02_clogit_biospheric.rds"
@@ -1479,6 +1488,15 @@ model2_output <-
         list(
           printPVal = 1
         )
+    )
+  )
+
+# Add one-sided p-values based on the robust standard errors used in the dissertation.
+model2_output[["Rob.p(1-sided)"]] <-
+  pnorm(
+    -abs(
+      model2_output[["Estimate"]] /
+        model2_output[["Rob.s.e."]]
     )
   )
 
@@ -1697,6 +1715,15 @@ model3_output <-
     )
   )
 
+# Add one-sided p-values based on the robust standard errors used in the dissertation.
+model3_output[["Rob.p(1-sided)"]] <-
+  pnorm(
+    -abs(
+      model3_output[["Estimate"]] /
+        model3_output[["Rob.s.e."]]
+    )
+  )
+
 saveRDS(
   model3,
   "./outputs/paper_C/models/02_clogit_hedonic.rds"
@@ -1910,6 +1937,15 @@ model4_output <-
         list(
           printPVal = 1
         )
+    )
+  )
+
+# Add one-sided p-values based on the robust standard errors used in the dissertation.
+model4_output[["Rob.p(1-sided)"]] <-
+  pnorm(
+    -abs(
+      model4_output[["Estimate"]] /
+        model4_output[["Rob.s.e."]]
     )
   )
 
