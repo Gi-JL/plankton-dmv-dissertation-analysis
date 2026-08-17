@@ -371,6 +371,10 @@ model_output <- as.data.frame(
   )
 )
 
+# Add one-sided p-values based on robust standard errors.
+model_output[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(model_output[["Estimate"]] / model_output[["Rob.s.e."]]))
+
 saveRDS(
   model,
   "./outputs/paper_A/models/01_baseline_conditional_logit.rds"
@@ -622,6 +626,10 @@ model_output <- as.data.frame(
   )
 )
 
+# Add one-sided p-values based on robust standard errors.
+model_output[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(model_output[["Estimate"]] / model_output[["Rob.s.e."]]))
+
 saveRDS(
   model,
   "./outputs/paper_A/models/02_plankton_carbon_interaction.rds"
@@ -810,6 +818,10 @@ apollo_beta = c(
 
 apollo_fixed = c()
 
+# Fix the random seed for reproducibility of the MLHS draws in the repository analysis.
+# No random seed was fixed in the original analysis reported in Paper A.
+set.seed(12345)
+
 apollo_draws = list(
   interDrawsType = "mlhs",
   interNDraws = 5000,
@@ -925,6 +937,10 @@ model_output <- as.data.frame(
     modelOutput_settings = list(printPVal = 1)
   )
 )
+
+# Add one-sided p-values based on robust standard errors.
+model_output[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(model_output[["Estimate"]] / model_output[["Rob.s.e."]]))
 
 saveRDS(
   model,
@@ -1473,7 +1489,9 @@ est_inland <- as.data.frame(
   )
 )
 
-names(est_inland)[7] <- "p_value"
+# Add one-sided p-values based on robust standard errors.
+est_inland[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(est_inland[["Estimate"]] / est_inland[["Rob.s.e."]]))
 
 saveRDS(
   model_inland,
@@ -1494,8 +1512,8 @@ write.csv(
 )
 
 coef_estimates <- model$estimate
-p_values <- est_inland[,7]
-std_errors <- est_inland[,5]
+p_values <- est_inland[["Rob.p(1-sided)"]]
+std_errors <- est_inland[["Rob.s.e."]]
 
 results_df_inland <- data.frame(
   Estimate = coef_estimates,
@@ -1637,7 +1655,9 @@ est_coast <- as.data.frame(
   )
 )
 
-names(est_coast)[7] <- "p_value"
+# Add one-sided p-values based on robust standard errors.
+est_coast[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(est_coast[["Estimate"]] / est_coast[["Rob.s.e."]]))
 
 saveRDS(
   model_coast,
@@ -1658,8 +1678,8 @@ write.csv(
 )
 
 coef_estimates <- model$estimate
-p_values <- est_coast[,7]
-std_errors <- est_coast[,5]
+p_values <- est_coast[["Rob.p(1-sided)"]]
+std_errors <- est_coast[["Rob.s.e."]]
 
 results_df_coast <- data.frame(
   Estimate = coef_estimates,
@@ -2121,6 +2141,10 @@ model_output <- as.data.frame(
   )
 )
 
+# Add one-sided p-values based on robust standard errors.
+model_output[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(model_output[["Estimate"]] / model_output[["Rob.s.e."]]))
+
 saveRDS(
   model,
   "./outputs/paper_A/models/05_distance_interaction.rds"
@@ -2409,7 +2433,9 @@ est_poland <- as.data.frame(
   )
 )
 
-names(est_poland)[7] <- "p_value"
+# Add one-sided p-values based on robust standard errors.
+est_poland[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(est_poland[["Estimate"]] / est_poland[["Rob.s.e."]]))
 
 saveRDS(
   model_poland,
@@ -2430,8 +2456,8 @@ write.csv(
 )
 
 coef_estimates <- model$estimate
-p_values <- est_poland[,7]
-std_errors <- est_poland[,5]
+p_values <- est_poland[["Rob.p(1-sided)"]]
+std_errors <- est_poland[["Rob.s.e."]]
 
 results_df_poland <- data.frame(
   Estimate = coef_estimates,
@@ -2551,7 +2577,9 @@ est_italy <- as.data.frame(
   )
 )
 
-names(est_italy)[7] <- "p_value"
+# Add one-sided p-values based on robust standard errors.
+est_italy[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(est_italy[["Estimate"]] / est_italy[["Rob.s.e."]]))
 
 saveRDS(
   model_italy,
@@ -2572,8 +2600,8 @@ write.csv(
 )
 
 coef_estimates <- model$estimate
-p_values <- est_italy[,7]
-std_errors <- est_italy[,5]
+p_values <- est_italy[["Rob.p(1-sided)"]]
+std_errors <- est_italy[["Rob.s.e."]]
 
 results_df_italy <- data.frame(
   Estimate = coef_estimates,
@@ -2693,7 +2721,9 @@ est_basque <- as.data.frame(
   )
 )
 
-names(est_basque)[7] <- "p_value"
+# Add one-sided p-values based on robust standard errors.
+est_basque[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(est_basque[["Estimate"]] / est_basque[["Rob.s.e."]]))
 
 saveRDS(
   model_basque,
@@ -2714,8 +2744,8 @@ write.csv(
 )
 
 coef_estimates <- model$estimate
-p_values <- est_basque[,7]
-std_errors <- est_basque[,5]
+p_values <- est_basque[["Rob.p(1-sided)"]]
+std_errors <- est_basque[["Rob.s.e."]]
 
 results_df_basque <- data.frame(
   Estimate = coef_estimates,
@@ -2835,7 +2865,9 @@ est_germany <- as.data.frame(
   )
 )
 
-names(est_germany)[7] <- "p_value"
+# Add one-sided p-values based on robust standard errors.
+est_germany[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(est_germany[["Estimate"]] / est_germany[["Rob.s.e."]]))
 
 saveRDS(
   model_germany,
@@ -2856,8 +2888,8 @@ write.csv(
 )
 
 coef_estimates <- model$estimate
-p_values <- est_germany[,7]
-std_errors <- est_germany[,5]
+p_values <- est_germany[["Rob.p(1-sided)"]]
+std_errors <- est_germany[["Rob.s.e."]]
 
 results_df_germany <- data.frame(
   Estimate = coef_estimates,
@@ -2977,7 +3009,9 @@ est_france <- as.data.frame(
   )
 )
 
-names(est_france)[7] <- "p_value"
+# Add one-sided p-values based on robust standard errors.
+est_france[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(est_france[["Estimate"]] / est_france[["Rob.s.e."]]))
 
 saveRDS(
   model_france,
@@ -2998,8 +3032,8 @@ write.csv(
 )
 
 coef_estimates <- model$estimate
-p_values <- est_france[,7]
-std_errors <- est_france[,5]
+p_values <- est_france[["Rob.p(1-sided)"]]
+std_errors <- est_france[["Rob.s.e."]]
 
 results_df_france <- data.frame(
   Estimate = coef_estimates,
@@ -3483,6 +3517,10 @@ model_output <- as.data.frame(
   )
 )
 
+# Add one-sided p-values based on robust standard errors.
+model_output[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(model_output[["Estimate"]] / model_output[["Rob.s.e."]]))
+
 saveRDS(
   model,
   "./outputs/paper_A/models/07_pooled_country_interaction.rds"
@@ -3855,8 +3893,9 @@ est_central <-
     )
   )
 
-names(est_central)[7] <-
-  "p_value"
+# Add one-sided p-values based on robust standard errors.
+est_central[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(est_central[["Estimate"]] / est_central[["Rob.s.e."]]))
 
 saveRDS(
   model_central,
@@ -3894,10 +3933,10 @@ coef_estimates <-
   model$estimate
 
 p_values <-
-  est_central[,7]
+  est_central[["Rob.p(1-sided)"]]
 
 std_errors <-
-  est_central[,5]
+  est_central[["Rob.s.e."]]
 
 results_df_central <-
   data.frame(
@@ -4045,8 +4084,9 @@ est_south <-
     )
   )
 
-names(est_south)[7] <-
-  "p_value"
+# Add one-sided p-values based on robust standard errors.
+est_south[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(est_south[["Estimate"]] / est_south[["Rob.s.e."]]))
 
 saveRDS(
   model_south,
@@ -4084,10 +4124,10 @@ coef_estimates <-
   model$estimate
 
 p_values <-
-  est_south[,7]
+  est_south[["Rob.p(1-sided)"]]
 
 std_errors <-
-  est_south[,5]
+  est_south[["Rob.s.e."]]
 
 results_df_south <-
   data.frame(
@@ -4638,6 +4678,10 @@ model_output <-
         list(printPVal = 1)
     )
   )
+
+# Add one-sided p-values based on robust standard errors.
+model_output[["Rob.p(1-sided)"]] <-
+  pnorm(-abs(model_output[["Estimate"]] / model_output[["Rob.s.e."]]))
 
 saveRDS(
   model,
